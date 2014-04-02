@@ -365,9 +365,9 @@ The positions specified as an option to the tabular environment specify the alig
 
 \LaTeXe{} supports quite a number of formats to be included in documents, depending of the flavor of the typesetter used.  For \verb|pdflatex|, one can use PDF as vector format, and PNG for pixel based graphics, such as screenshots.  First of all, one has to include a package for using graphics, e.g., \verb|graphicx|.  After that, including a graphics file is as easy as using the following command:
 \begin{verbatim}
-    \includegraphics[width=10cm]{screenshot.png}
+    \includegraphics[width=10cm]{img/screenshot.png}
 \end{verbatim}
-\includegraphics[width=10cm]{screenshot.png} \\
+\includegraphics[width=10cm]{img/screenshot.png} \\
 When only the width or height of a figure is specified, the figure will be scaled to that value, preserving the aspect ratio.
 
 Typically, figures, and for that matter tables as well, are often included as floating elements.  For the figure above, that would be:
@@ -375,7 +375,7 @@ Typically, figures, and for that matter tables as well, are often included as fl
     \begin{figure}[h]
         \caption{\label{fig:notepad} Notepad++ is a Windows text editor}
         \begin{center}
-            \includegraphics[width=10cm]{screenshot.png}
+            \includegraphics[width=10cm]{img/screenshot.png}
         \end{center}
     \end{figure}
 \end{verbatim}
@@ -383,7 +383,7 @@ Typically, figures, and for that matter tables as well, are often included as fl
 \begin{figure}[h]
     \caption{\label{fig:notepad} Notepad++ is a Windows text editor}
     \begin{center}
-        \includegraphics[width=10cm]{screenshot.png}
+        \includegraphics[width=10cm]{img/screenshot.png}
     \end{center}
 \end{figure}
 
