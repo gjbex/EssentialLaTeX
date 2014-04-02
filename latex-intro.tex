@@ -1,28 +1,54 @@
+% document class is book, default font size for normal text is 11 point,
+% paper size is A4, and typesetting will not produce facing pages (more
+% appropriate for manuals
 \documentclass[11pt,a4paper,oneside]{book}
 
+%%% start preamble
+
+% setting parindent to zero avoid indentation of paragraph
 \setlength{\parindent}{0cm}
 
-\usepackage{color}
+% package used to include graphics such as screen shots in PNG format
 \usepackage{graphicx}
-\usepackage{hyperref, url}
+% package to easily include URLs, email addresses
+\usepackage{url}
+% package to automatically insert clickable links in the PDF document
+% from, .e.g, references to what they refer to, or from index entries
+% to the page they refer to
+\usepackage{hyperref}
+% package to typeset source code
 \usepackage{listings}
-
+% package that includes the \BibTeX command
 \usepackage{gmutils}
+% package to create an index
 \usepackage{makeidx}
+
+% start the index
 \makeindex
+
+%%% end preamble
 
 \begin{document}
 
+% defines a command to indicate a header in a table
 \newcommand{\tableheader}[1]{\textbf{#1}}
+% command to indicate that the term should be included in the index
 \newcommand{\ientry}[1]{#1\index{#1}}
+% command to indicate that the term should be included in the index, and
+% that it is the main entry
 \newcommand{\imentry}[1]{#1\index{#1|\textbf}}
 
 \frontmatter
+% provide information for the title page
 \title{Essential \LaTeXe{}}
-\author{G.J.\ Bex (\url{geertjan.bex@uhasselt.be})}
+\author{G.J.\ Bex \\
+        Hasselt University, Belgium \\
+        \url{geertjan.bex@uhasselt.be}}
 \date{\today}
 
+% generate the title
 \maketitle
+% generate the table of contents
 \tableofcontents
 
 \mainmatter
@@ -339,9 +365,9 @@ The positions specified as an option to the tabular environment specify the alig
 
 \LaTeXe{} supports quite a number of formats to be included in documents, depending of the flavor of the typesetter used.  For \verb|pdflatex|, one can use PDF as vector format, and PNG for pixel based graphics, such as screenshots.  First of all, one has to include a package for using graphics, e.g., \verb|graphicx|.  After that, including a graphics file is as easy as using the following command:
 \begin{verbatim}
-    \includegraphics[width=10cm]{screenshot.png}
+    \includegraphics[width=10cm]{img/screenshot.png}
 \end{verbatim}
-\includegraphics[width=10cm]{screenshot.png} \\
+\includegraphics[width=10cm]{img/screenshot.png} \\
 When only the width or height of a figure is specified, the figure will be scaled to that value, preserving the aspect ratio.
 
 Typically, figures, and for that matter tables as well, are often included as floating elements.  For the figure above, that would be:
@@ -349,7 +375,7 @@ Typically, figures, and for that matter tables as well, are often included as fl
     \begin{figure}[h]
         \caption{\label{fig:notepad} Notepad++ is a Windows text editor}
         \begin{center}
-            \includegraphics[width=10cm]{screenshot.png}
+            \includegraphics[width=10cm]{img/screenshot.png}
         \end{center}
     \end{figure}
 \end{verbatim}
@@ -357,7 +383,7 @@ Typically, figures, and for that matter tables as well, are often included as fl
 \begin{figure}[h]
     \caption{\label{fig:notepad} Notepad++ is a Windows text editor}
     \begin{center}
-        \includegraphics[width=10cm]{screenshot.png}
+        \includegraphics[width=10cm]{img/screenshot.png}
     \end{center}
 \end{figure}
 
@@ -436,13 +462,14 @@ Note that to include generated indices correctly, it takes a few typesetting pas
 \section{Creating a glossary}
 \label{sec:glossary}
 
+This section will be written as soon as the status of the \verb|glossaries| package is clarified.
 
 
 
 \backmatter
-
+% generate the bibliography, using the vsc-refs.bib BibTeX file
 \bibliography{vsc-refs} \bibliographystyle{alpha}
-
+% generate the index
 \printindex
 
 \end{document}
